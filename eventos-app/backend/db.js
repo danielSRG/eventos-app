@@ -1,7 +1,9 @@
+// Base de datos en memoria para almacenar los eventos
 let eventosDB = [];
 
 const obtenerEventos = () => eventosDB;
 
+//Crea un nuevo evento y lo agrega a la base de datos.
 const crearEvento = (evento) => {
   const nuevoEvento = {
     id: eventosDB.length + 1,
@@ -15,6 +17,7 @@ const crearEvento = (evento) => {
   return nuevoEvento;
 };
 
+//funcion para actualizar un evento existente basado en su ID.
 const actualizarEvento = (id, nuevosDatos) => {
   const index = eventosDB.findIndex(e => e.id === parseInt(id));
   if (index === -1) return null;
@@ -30,13 +33,14 @@ const actualizarEvento = (id, nuevosDatos) => {
 
   return eventosDB[index];
 };
-
+//funcion elimina un evento por su ID.
 const eliminarEvento = (id) => {
   const index = eventosDB.findIndex(e => e.id === parseInt(id));
   if (index === -1) return null;
   return eventosDB.splice(index, 1)[0];
 };
 
+//funcion para vender boletos de un evento específico.
 const venderBoletos = (id, cantidad) => {
   const evento = eventosDB.find(e => e.id === parseInt(id));
   if (!evento) return { error: "Evento no encontrado" };
@@ -50,6 +54,7 @@ const venderBoletos = (id, cantidad) => {
   return evento;
 };
 
+//Exporta funciones para el uso en otros archivos
 module.exports = {
   crearEvento,
   obtenerEventos,

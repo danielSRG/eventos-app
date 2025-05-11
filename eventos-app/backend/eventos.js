@@ -58,6 +58,7 @@ const eliminarEvento = async (id) => {
     }
 };
 
+// Vender boletos
 const venderBoletos = async (id, cantidad) => {
     try {
         const response = await fetch(`http://localhost:3000/eventos/${id}/vender`, {

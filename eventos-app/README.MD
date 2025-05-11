@@ -11,9 +11,9 @@ Aplicación web sencilla para gestionar eventos: permite crear, listar, editar, 
 ## pasos para la inicialización del proyecto
 
 - Backend:
-1. tener descargado Node.js
-2. ingresar a la carpeta backend e ingresar el comando npm install( esto instalara express y cualquier otra dependencia)
-3. en la misma carpeta backend, ingresar el comando node server.js
+1. Tener descargado Node.js
+2. Ingresar a la carpeta backend e ingresar el comando npm install( esto instalara express y cualquier otra dependencia)
+3. En la misma carpeta backend, ingresar el comando node server.js para correr la web
 
 4. Para probar los metodos de la Api Restful desde el backend, se puede realizar por medio de la extension (Thunder Client)
     - GET http://localhost:3000/eventos → ver todos los eventos.

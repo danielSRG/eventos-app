@@ -1,11 +1,16 @@
+// Espera que el DOM esté completamente cargado antes de ejecutar funciones
 let eventos = [];
 
 document.addEventListener('DOMContentLoaded', () => {
-  obtenerEventos();
+  obtenerEventos(); // Carga inicial de eventos
 
+  // Asocia el formulario principal para crear eventos
   document.getElementById('formEvento').addEventListener('submit', crearEvento);
+  // Asocia el formulario del modal para editar eventos
   document.getElementById('formEditarEvento').addEventListener('submit', guardarCambios);
+  // Cierra el modal al hacer clic en el botón de cerrar
   document.getElementById('cerrarModal').addEventListener('click', cerrarModal);
+  // Cierra el modal si el usuario hace clic fuera del área del modal
   window.addEventListener('click', (event) => {
     const modal = document.getElementById('modalEditar');
     if (event.target == modal) {
@@ -14,6 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+
+// Función para obtener eventos desde el servidor
 function obtenerEventos() {
   fetch('http://localhost:3000/eventos')
     .then(response => response.json())
@@ -24,6 +31,7 @@ function obtenerEventos() {
     .catch(error => console.error('Error al obtener eventos:', error));
 }
 
+// Función para mostrar eventos en la lista
 function mostrarEventos() {
   const eventosList = document.getElementById('eventosList');
   eventosList.innerHTML = '';
@@ -32,6 +40,7 @@ function mostrarEventos() {
     const li = document.createElement('li');
     li.classList.add('evento-item');
 
+    // Formatea fecha y precio para mostrar correctamente
     const fechaFormateada = new Date(evento.fecha_hora).toLocaleString('es-CO', {
       dateStyle: 'long',
       timeStyle: 'short'
@@ -43,6 +52,7 @@ function mostrarEventos() {
       minimumFractionDigits: 0
     }).format(evento.precio);
 
+    // Inserta el HTML con botones de acción
     li.innerHTML = `
       <div class="evento-info">
         <strong>${evento.id}</strong>: ${evento.nombre} - ${fechaFormateada} - ${evento.ubicacion} - 
@@ -59,15 +69,19 @@ function mostrarEventos() {
   });
 }
 
+
+//Crea un nuevo evento 
 function crearEvento(e) {
   e.preventDefault();
 
+  // Obtiene valores del formulario
   const nombre = document.getElementById('nombre').value.trim();
   const fecha = document.getElementById('fecha').value;
   const ubicacion = document.getElementById('ubicacion').value.trim();
   const cantidad = parseInt(document.getElementById('cantidad').value);
   const precio = parseFloat(document.getElementById('precio').value);
 
+  // Validación de campos
   if (!nombre || !fecha || isNaN(cantidad) || cantidad <= 0) {
     alert("Debes ingresar nombre, fecha y una cantidad de boletos válida.");
     return;
@@ -99,6 +113,7 @@ function crearEvento(e) {
     })
     .catch(error => console.error('Error:', error));
 }
+//Muestra la modal de edición con datos precargados
 
 function mostrarModalEditar(id) {
   const evento = eventos.find(e => e.id === id);
@@ -164,7 +179,7 @@ function guardarCambios(e) {
     })
     .catch(error => console.error("Error al guardar cambios:", error));
 }
-
+//funcion para vender boletos de un evento especifico
 async function venderBoletos(id) {
   const cantidad = prompt('¿Cuántos boletos deseas vender?');
   if (!cantidad || isNaN(cantidad)) return alert('Cantidad inválida.');
@@ -184,6 +199,7 @@ async function venderBoletos(id) {
   }
 }
 
+//funcion para eliminar un evento especifico
 function eliminarEvento(id) {
   if (!confirm("¿Estás seguro de que deseas eliminar este evento?")) return;
 
