@@ -28,7 +28,7 @@ Aplicación web sencilla para gestionar eventos: permite crear, listar, editar, 
 1. Las validaciones básicas están implementadas en el frontend.
 
 
-## ✅ Funcionalidades
+## Funcionalidades
 
 1. Crear un nuevo evento con:
    - Nombre
@@ -46,18 +46,14 @@ Aplicación web sencilla para gestionar eventos: permite crear, listar, editar, 
 
 ## Estructura del proyecto
 
-eventos-app/ 
-│
-├── backend/
-│ ├── server.js # Servidor Express con endpoints REST
-│ └── db.js # Lógica de almacenamiento en memoria
-  └── eventos.js # maneja la lógica visual para interactuar con el backend
-│
-├── frontend/
-│    ├──modal_edit
-     │   └──modal.css # estilos de la modal de editar
-│    ├── index.html # Interfaz visual
-│    ├── style.css # Estilos
-│    └── app.js # Lógica del frontend
-│
-└── README.md 
+**Backend**: 
+- server.js: Servidor Express con endpoints REST
+- db.js: Lógica de almacenamiento en memoria
+- eventos.js: maneja la lógica visual para interactuar con el backend
+
+**Frontend**
+- modal.css: estilos de la modal de editar
+- index.html: Interfaz visual
+- style.css: Estilos
+- app.js: Lógica del frontend
+
