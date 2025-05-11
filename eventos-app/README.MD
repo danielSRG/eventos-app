@@ -20,7 +20,7 @@ Aplicación web sencilla para gestionar eventos: permite crear, listar, editar, 
     - POST http://localhost:3000/eventos con body JSON → crear uno nuevo.
     - PUT http://localhost:3000/eventos/1 con body JSON → actualizar el evento con ID 1.
     - DELETE http://localhost:3000/eventos/1 → eliminar el evento con ID 1.
-    -POST http://localhost:3000/eventos/1/vender con { "cantidad": 1 } → vender un boleto del evento 1.
+    - POST http://localhost:3000/eventos/1/vender con body json { "cantidad": 1 } → vender un boleto del evento 1.
 
 - NOTA: La base de datos está en memoria, así que se borra al reiniciar el servidor(server.js) esto solo aplica si se cambia algo en dicho archivo.
 
