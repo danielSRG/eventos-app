@@ -10,6 +10,8 @@ Aplicación web sencilla para gestionar eventos: permite crear, listar, editar, 
 
 ## pasos para la inicialización del proyecto
 
+- Clonar el repositorio
+
 - Backend:
 1. Tener descargado Node.js
 2. Ingresar a la carpeta backend e ingresar el comando npm install( esto instalara express y cualquier otra dependencia)
